@@ -28,23 +28,20 @@ object Main {
     * Exercise 2
     */
   def balance(chars: List[Char]): Boolean = {
-    var x = 0
+    val x = 0
 
-    def loop(charsx: List[Char]): Unit = {
-      if (!charsx.isEmpty) {
-        if (charsx.head == '(') x += 1
-        else if (charsx.head == ')')
-          if (x > 0) x -= 1
-          else {
-            x = -1
-            return
-          }
-        loop(charsx.tail: List[Char])
+    def loop(charsx: List[Char], depth: Int): Int = {
+      if (depth >= 0 && !charsx.isEmpty) {
+          if (charsx.head == '(') loop(charsx.tail: List[Char], depth + 1)
+          else if (charsx.head == ')') loop(charsx.tail: List[Char], depth - 1)
+          else
+            loop(charsx.tail: List[Char], depth)
+      } else {
+        depth
       }
     }
 
-    loop(chars)
-    x == 0
+    loop(chars, 0) == 0
   }
 
   /**
@@ -52,8 +49,29 @@ object Main {
     */
   def countChange(money: Int, coins: List[Int]): Int = {
     var res = 0
-    coins.sortWith(_ < _)
-    
+    val coinsx = coins.sortWith(_ < _)
+    val start = coins.length - 1
+
+    def counter(cm: Int, index: Int): Int = {
+      val coin = coinsx(index)
+      if (index > 0 && cm > 0) {
+        if (cm >= coin) counter(cm - coin, index)
+        else counter(cm, index - 1)
+      }
+      cm
+    }
+
+    def loop(index: Int): Unit = {
+      if (index > 0) {
+        val i = counter(money, index)
+        //        println(i)
+        if (i == 0) res += 1
+        loop(index - 1)
+      }
+
+    }
+
+    loop(start)
     res
   }
 }
