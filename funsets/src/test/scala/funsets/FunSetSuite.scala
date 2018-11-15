@@ -113,9 +113,12 @@ class FunSetSuite extends FunSuite {
 
   test("forall & map: doubling numbers") {
     new TestSets {
-      private val bool: Boolean = forall(s4, x => x < 5)
-      print(bool)
+      print(forall(s4, x => x < 5))
     }
   }
-
+  test("2 should exist in the given set") {
+    new TestSets {
+      print(forall(s4, x => x == 2 ))
+    }
+  }
 }
