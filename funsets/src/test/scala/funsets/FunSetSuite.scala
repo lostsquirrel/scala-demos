@@ -77,6 +77,7 @@ class FunSetSuite extends FunSuite {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+    def s4 = (x: Int) => Array(1, 2, 3, 4).contains(x)
   }
 
   /**
@@ -110,5 +111,11 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("forall & map: doubling numbers") {
+    new TestSets {
+      private val bool: Boolean = forall(s4, x => x < 5)
+      print(bool)
+    }
+  }
 
 }
