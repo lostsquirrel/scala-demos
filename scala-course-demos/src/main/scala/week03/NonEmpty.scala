@@ -10,4 +10,7 @@ class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
     if (x < elem) left contains x
     else if (x > elem) right contains x
     else true
+
+  override def union(other: IntSet): IntSet =
+    ((left union right) union other) incl elem
 }
