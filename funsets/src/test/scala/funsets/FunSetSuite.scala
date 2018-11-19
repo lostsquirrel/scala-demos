@@ -118,7 +118,12 @@ class FunSetSuite extends FunSuite {
   }
   test("2 should exist in the given set") {
     new TestSets {
-      print(forall(s4, x => x == 2 ))
+//      print(forall(s4, x => x == 2 ))
     }
+  }
+
+  test ("map") {
+    val f = map(x => x < 5, x => x * 2)
+
   }
 }
