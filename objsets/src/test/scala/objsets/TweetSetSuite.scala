@@ -27,6 +27,11 @@ class TweetSetSuite extends FunSuite {
 
   def size(set: TweetSet): Int = asSet(set).size
 
+  test("size") {
+    new TestSets {
+      println(size(set3))
+    }
+  }
   test("filter: on empty set") {
     new TestSets {
       assert(size(set1.filter(tw => tw.user == "a")) === 0)
@@ -68,6 +73,12 @@ class TweetSetSuite extends FunSuite {
       val trends = set5.descendingByRetweet
       assert(!trends.isEmpty)
       assert(trends.head.user == "a" || trends.head.user == "b")
+    }
+  }
+
+  test("retweet most") {
+    new TestSets {
+      assert(set5.mostRetweeted.retweets === 20)
     }
   }
 
