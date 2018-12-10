@@ -1,4 +1,4 @@
-package week4.idealized
+package week04.idealized
 
 /**
   *  Boolean as jvm boolean

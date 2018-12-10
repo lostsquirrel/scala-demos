@@ -1,4 +1,4 @@
-package week4.list
+package week04.list
 
 class NilList[T] extends List[T] {
   override def isEmpty: Boolean = true

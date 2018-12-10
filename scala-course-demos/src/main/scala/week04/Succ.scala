@@ -1,4 +1,4 @@
-package week4
+package week04
 
 
 class Succ(n: Nat) extends Nat{
