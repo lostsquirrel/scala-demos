@@ -1,5 +1,6 @@
-import org.scalatest.FunSuite
+package week05
 
+import org.scalatest.FunSuite
 import week05.MergeSort._
 
 class MergeSortTest extends FunSuite {
