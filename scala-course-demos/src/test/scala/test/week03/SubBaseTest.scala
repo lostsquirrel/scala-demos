@@ -1,4 +1,4 @@
-package week03
+package test.week03
 
 import org.scalatest.FunSuite
 

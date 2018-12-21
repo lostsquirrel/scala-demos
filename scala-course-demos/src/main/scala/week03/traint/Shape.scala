@@ -1,4 +1,4 @@
-package week03.traint
+package test.week03.traint
 
 class Shape {
 

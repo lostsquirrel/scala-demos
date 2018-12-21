@@ -1,4 +1,4 @@
-package week03
+package test.week03
 
 object NothingTypeDemo {
 

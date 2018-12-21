@@ -1,4 +1,4 @@
-package week03.traint
+package test.week03.traint
 
 class Square extends Shape with Planar with Movable {
   override def height: Int = 1

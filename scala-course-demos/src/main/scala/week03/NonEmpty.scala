@@ -1,4 +1,4 @@
-package week03
+package test.week03
 
 class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
   override def incl(x: Int): IntSet =
