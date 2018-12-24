@@ -1,7 +1,7 @@
 package test.week03
 
 import org.scalatest.FunSuite
-import test.week03.list.{ConsList, NilList}
+import week03.list.{ConsList, NilList, ImmutableLinkedListUtils}
 
 class ImmutableLinkedListTest extends FunSuite {
 
@@ -34,5 +34,18 @@ class ImmutableLinkedListTest extends FunSuite {
 
   test("test cons tail") {
     assert(c.tail.isEmpty)
+  }
+
+  test("test sample") {
+    val i = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val l = ImmutableLinkedListUtils.sample[Int](i, 10)
+    assert(l.head == 0)
+//    println(l)
+  }
+
+  test("test indexOf") {
+    val i = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val l = ImmutableLinkedListUtils.sample[Int](i, 10)
+    assert(ImmutableLinkedListUtils.indexOf[Int](l, 3) === 3)
   }
 }
