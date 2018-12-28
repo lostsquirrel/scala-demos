@@ -5,6 +5,7 @@ import org.scalatest.FunSuite
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.junit.Test
 
 @RunWith(classOf[JUnitRunner])
 class TweetSetSuite extends FunSuite {
@@ -65,6 +66,14 @@ class TweetSetSuite extends FunSuite {
   test("union: with empty set (2)") {
     new TestSets {
       assert(size(set1.union(set5)) === 4)
+    }
+  }
+
+  test("mostRetweeted: with empty set") {
+    intercept[NoSuchElementException] {
+      new TestSets {
+        print(set1.mostRetweeted)
+      }
     }
   }
 
