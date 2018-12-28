@@ -35,14 +35,6 @@ class Tweet(val user: String, val text: String, val retweets: Int) {
 abstract class TweetSet {
 
   /**
-<<<<<<< HEAD
-    * This method takes a predicate and returns a subset of all the elements
-    * in the original set for which the predicate is true.
-    *
-    */
-  def filter(p: Tweet => Boolean): TweetSet
-
-=======
    * This method takes a predicate and returns a subset of all the elements
    * in the original set for which the predicate is true.
    *
@@ -50,64 +42,20 @@ abstract class TweetSet {
    * and be implemented in the subclasses?
    */
     def filter(p: Tweet => Boolean): TweetSet
-  
->>>>>>> add test to mostRetweeted on emtpy set
+
   /**
     * This is a helper method for `filter` that propagetes the accumulated tweets.
     */
   def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet
 
   /**
-<<<<<<< HEAD
-    * Returns a new `TweetSet` that is the union of `TweetSet`s `this` and `that`.
-    *
-    * Question: Should we implment this method here, or should it remain abstract
-    * and be implemented in the subclasses?
-    */
-  def union(that: TweetSet): TweetSet
-
-  /**
-    * Returns the tweet from this set which has the greatest retweet count.
-    *
-    * Calling `mostRetweeted` on an empty set should throw an exception of
-    * type `java.util.NoSuchElementException`.
-    *
-    * Question: Should we implment this method here, or should it remain abstract
-    * and be implemented in the subclasses?
-    */
-  def mostRetweeted: Tweet
-
-  /**
-    * Returns a list containing all tweets of this set, sorted by retweet count
-    * in descending order. In other words, the head of the resulting list should
-    * have the highest retweet count.
-    *
-    * Hint: the method `remove` on TweetSet will be very useful.
-    * Question: Should we implment this method here, or should it remain abstract
-    * and be implemented in the subclasses?
-    */
-  def descendingByRetweet: TweetList = ???
-
-  def isEmpty: Boolean
-
-  /**
-    * The following methods are already implemented
-    */
-
-  /**
-    * Returns a new `TweetSet` which contains all elements of this set, and the
-    * the new element `tweet` in case it does not already exist in this set.
-    *
-    * If `this.contains(tweet)`, the current set is returned.
-    */
-=======
    * Returns a new `TweetSet` that is the union of `TweetSet`s `this` and `that`.
    *
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
     def union(that: TweetSet): TweetSet
-  
+
   /**
    * Returns the tweet from this set which has the greatest retweet count.
    *
@@ -116,7 +64,7 @@ abstract class TweetSet {
    *
    */
     def mostRetweeted: Tweet
-  
+
   /**
    * Returns a list containing all tweets of this set, sorted by retweet count
    * in descending order. In other words, the head of the resulting list should
@@ -124,7 +72,7 @@ abstract class TweetSet {
    *
    */
     def descendingByRetweet: TweetList
-  
+
   /**
    * The following methods are already implemented
    */
@@ -135,7 +83,6 @@ abstract class TweetSet {
    *
    * If `this.contains(tweet)`, the current set is returned.
    */
->>>>>>> add test to mostRetweeted on emtpy set
   def incl(tweet: Tweet): TweetSet
 
   /**
@@ -155,13 +102,8 @@ abstract class TweetSet {
 }
 
 class Empty extends TweetSet {
-<<<<<<< HEAD
   def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = acc
 
-=======
-    def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = this
-  
->>>>>>> add test to mostRetweeted on emtpy set
   /**
     * The following methods are already implemented
     */
@@ -189,19 +131,11 @@ class Empty extends TweetSet {
     */
   override def mostRetweeted: Tweet = throw new NoSuchElementException
 
-<<<<<<< HEAD
-  override def isEmpty: Boolean = true
 
-=======
->>>>>>> add test to mostRetweeted on emtpy set
   /**
     * This method takes a predicate and returns a subset of all the elements
     * in the original set for which the predicate is true.
     *
-<<<<<<< HEAD
-    */
-  override def filter(p: Tweet => Boolean): TweetSet = this
-=======
     * Question: Can we implment this method here, or should it remain abstract
     * and be implemented in the subclasses?
     */
@@ -214,7 +148,6 @@ class Empty extends TweetSet {
     *
     */
   override def descendingByRetweet: TweetList = Nil
->>>>>>> add test to mostRetweeted on emtpy set
 }
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
@@ -228,7 +161,7 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   def size(set: TweetSet): Int = asSet(set).size
 
   def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = {
-
+    acc.filter(p)
   }
 
 
@@ -258,46 +191,20 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
     right.foreach(f)
   }
 
-  /**
-    * Returns a new `TweetSet` that is the union of `TweetSet`s `this` and `that`.
-    *
-    * Question: Should we implment this method here, or should it remain abstract
-    * and be implemented in the subclasses?
-    */
   override def union(that: TweetSet): TweetSet =
     ((left union right) union that) incl (elem)
 
-  /**
-    * Returns the tweet from this set which has the greatest retweet count.
-    *
-    * Calling `mostRetweeted` on an empty set should throw an exception of
-    * type `java.util.NoSuchElementException`.
-    *
-    */
   override def mostRetweeted: Tweet = {
     //    println(right)
-    if (right.isEmpty) {
-      elem
-    } else right mostRetweeted
+//TODO  try to find by help function
+    new Tweet("","", 0)
   }
 
-<<<<<<< HEAD
-  override def isEmpty: Boolean = false
 
-=======
->>>>>>> add test to mostRetweeted on emtpy set
   /**
     * This method takes a predicate and returns a subset of all the elements
     * in the original set for which the predicate is true.
     *
-<<<<<<< HEAD
-    */
-  override def filter(p: Tweet => Boolean): TweetSet = {
-    filterAcc(p, new Empty)
-  }
-
-
-=======
     * Question: Can we implment this method here, or should it remain abstract
     * and be implemented in the subclasses?
     */
@@ -316,7 +223,6 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
     *
     */
   override def descendingByRetweet: TweetList = ???
->>>>>>> add test to mostRetweeted on emtpy set
 }
 
 trait TweetList {
